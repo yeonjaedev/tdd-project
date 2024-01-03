@@ -29,7 +29,7 @@ const Pagination = (props: Props) => {
             </button>
             {num &&
                 num.map(n => (
-                    <button key={n} style={n == nowPage ? {border: '1px solid red'} : {}} onClick={() => setNowPage && setNowPage(n)}>
+                    <button key={n} style={n == nowPage ? {border: '2px solid blue'} : {}} onClick={() => setNowPage && setNowPage(n)}>
                         {n}
                     </button>
                 ))}

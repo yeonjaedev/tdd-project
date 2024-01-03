@@ -14,11 +14,13 @@ const App = () => {
     }, [nowPage]);
     return (
         <>
-            {employees.map(employee => (
-                <li key={employee.id}>
-                    {employee.name} / {employee.email}
-                </li>
-            ))}
+            <div style={{height: 130, width: 500}}>
+                {employees.map(employee => (
+                    <li key={employee.id}>
+                        {employee.name} / {employee.email}
+                    </li>
+                ))}
+            </div>
             <Pagination totalItems={jsonData.employees.length} itemsPerPages={itemPerPages} setNowPage={setNowPage} nowPage={nowPage} />
         </>
     );

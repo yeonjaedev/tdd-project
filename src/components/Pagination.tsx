@@ -1,12 +1,14 @@
 import {useEffect, useState} from 'react';
+import '../App.css';
 type Props = {
     totalItems: number;
     itemsPerPages: number;
-    setNowPage: React.Dispatch<React.SetStateAction<number>> | undefined;
+    setNowPage?: React.Dispatch<React.SetStateAction<number>> | undefined;
     nowPage: number;
+    pageNumberTestId?: string;
 };
 const Pagination = (props: Props) => {
-    const {totalItems, itemsPerPages, setNowPage, nowPage} = props;
+    const {totalItems, itemsPerPages, setNowPage, nowPage, pageNumberTestId} = props;
     const [num, setNum] = useState<number[]>([]);
     useEffect(() => {
         if (totalItems > 0 && itemsPerPages > 0) {
@@ -24,16 +26,16 @@ const Pagination = (props: Props) => {
 
     return (
         <div>
-            <button onClick={onClickPrev} disabled={nowPage == 1}>
+            <button onClick={onClickPrev} className={nowPage === 1 ? 'disabledBtn' : ''}>
                 prev
             </button>
             {num &&
                 num.map(n => (
-                    <button key={n} style={n == nowPage ? {border: '2px solid blue'} : {}} onClick={() => setNowPage && setNowPage(n)}>
+                    <button key={n} style={n == nowPage ? {border: '2px solid blue'} : {}} onClick={() => setNowPage && setNowPage(n)} data-testid={pageNumberTestId}>
                         {n}
                     </button>
                 ))}
-            <button onClick={onClickNext} disabled={nowPage == num.length}>
+            <button onClick={onClickNext} className={nowPage === num.length ? 'disabledBtn' : ''}>
                 next
             </button>
         </div>

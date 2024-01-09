@@ -17,11 +17,15 @@ const Pagination = (props: Props) => {
         }
     }, [totalItems, itemsPerPages]);
     const onClickPrev = () => {
-        setNowPage && setNowPage(nowPage - 1);
+        if (nowPage !== 1) {
+            setNowPage && setNowPage(nowPage - 1);
+        }
     };
 
     const onClickNext = () => {
-        setNowPage && setNowPage(nowPage + 1);
+        if (nowPage !== num.length) {
+            setNowPage && setNowPage(nowPage + 1);
+        }
     };
 
     return (

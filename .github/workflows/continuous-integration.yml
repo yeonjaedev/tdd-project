@@ -13,6 +13,6 @@ jobs:
                   node-version: 16.x
 
             - name: Run Continuous Integration
-              run: | # npm ci : package.json에 명시된 package install , package-lock과 package 비교,
+              run: | # npm ci : package.json에 명시된 package install , package-lock과 package 비교
                   npm ci 
                   npm test

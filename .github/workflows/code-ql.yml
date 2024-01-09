@@ -1,5 +1,5 @@
 name: 'CodeQL'
-
+# 코드 체크
 on:
     push:
         branches: [master]
@@ -20,18 +20,18 @@ jobs:
             fail-fast: false
             matrix:
                 language: ['javascript', 'typescript']
-            steps:
-                - uses: actions/checkout@v3
-                - uses: actions/setup-node@v3
-                  with:
-                      node-version: 14
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 14
 
-                - name: Initialize Code QL
-                  uses: github/codeql-action/init@v2
-                  with:
-                      languages: ${{ matrix.language }}
-                - name: Qutobuild
-                  uses: github/codeql-action/autobuild@v2
+            - name: Initialize Code QL
+              uses: github/codeql-action/init@v2
+              with:
+                  languages: ${{ matrix.language }}
+            - name: Qutobuild
+              uses: github/codeql-action/autobuild@v2
 
-                - name: Perform CodeQL Analysis
-                  uses: github/codeql-action/analyze@v2
+            - name: Perform CodeQL Analysis
+              uses: github/codeql-action/analyze@v2
